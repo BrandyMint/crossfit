@@ -1,0 +1,13 @@
+= page_header 'Упражнения' do
+  = link_to "Добавить упражнение", new_exercise_path, class: 'btn btn-default'
+
+- if @exercises.any?
+  table.table
+    thead
+      th = Exercise.human_attribute_name :title
+      th
+    tbody
+      - @exercises.each do |exercise|
+        tr
+          td = exercise.title
+          td.controls = edit_link exercise

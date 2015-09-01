@@ -3,6 +3,7 @@ source 'https://rubygems.org'
 gem 'rails', '4.2.4'
 
 gem 'bootstrap-sass', '~> 3.3'
+gem 'cocoon', '~> 1.2.6'
 gem 'coffee-rails', '~> 4.1.0'
 gem 'dotenv-rails', '~> 2.0'
 gem 'jquery-rails'

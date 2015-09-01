@@ -1,0 +1,25 @@
+= simple_form_for @workout do |f|
+  fieldset
+    = f.input :title
+    = f.input :description, as: :text, input_html: { rows: 5 }
+  fieldset
+    = f.input :pre_workout, as: :text, input_html: { rows: 5 }
+    = f.input :special_pre_workout, as: :text, input_html: { rows: 5 }
+
+  fieldset
+    legend Основная тренировка
+
+    .row
+      .col-md-4
+        = f.input :rounds
+
+    #moves
+      = f.simple_fields_for :moves do |move|
+        = render 'move_fields', f: move
+      p = link_to_add_association 'Добавить упражнение', f, :moves, class: 'btn btn-default btn-xs'
+
+  fieldset
+    = f.input :post_workout, as: :text, input_html: { rows: 5 }
+
+  fieldset
+    = f.button :submit

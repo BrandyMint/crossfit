@@ -1,0 +1,19 @@
+ru:
+  reps:
+    one: '%{count} раз'
+    few: '%{count} раза'
+    many: '%{count} раз'
+    other: '%{count} раз'
+  attributes:
+    description: Описание
+    distance_meters: Дистанция
+    exercise_id: Упражнение
+    height_meters: Высота
+    post_workout: Заминка
+    pre_workout: Разминка
+    reps: Повторы
+    rounds: Количество раундов
+    special_pre_workout: Специальная разминка
+    time_seconds: Время
+    title: Название
+    weight_kilos: Вес
