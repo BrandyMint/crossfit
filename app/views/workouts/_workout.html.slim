@@ -1,0 +1,14 @@
+- if workout.description.present?
+  = simple_format workout.description
+
+- if workout.pre_workout.present?
+  h4 = Workout.human_attribute_name :pre_workout
+  = simple_format workout.pre_workout
+
+- if workout.special_pre_workout.present?
+  h4 = Workout.human_attribute_name :special_pre_workout
+  = simple_format workout.special_pre_workout
+
+h4 Основная тренировка
+p: strong #{t :rounds, count: workout.rounds}:
+= display_moves workout.moves

@@ -1,4 +1,14 @@
-module MovesHelper
+module WorkoutsHelper
+  def display_moves(moves)
+    if moves.any?
+      content_tag :ul do
+        moves.each do |move|
+          concat content_tag(:li, display_move(move))
+        end
+      end
+    end
+  end
+
   def display_move(move)
     content_tag :span do
       items = [move.title]

@@ -1,0 +1,16 @@
+= page_header 'Результаты'
+
+- if @logs.any?
+  table.table
+    thead
+      th = Exercise.human_attribute_name :date
+      th = Exercise.human_attribute_name :move_logs
+      th = Exercise.human_attribute_name :notes
+      th
+    tbody
+      - @logs.each do |log|
+        tr
+          td = log.date
+          td = display_moves log.move_logs
+          td = simple_format log.notes
+          td.controls = edit_link log

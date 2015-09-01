@@ -1,0 +1,26 @@
+.well
+  h5 = f.object.move.title
+  = f.input :move_id, as: :hidden
+  .row
+    .col-md-2
+      = f.input :reps
+    .col-md-2
+      = f.input :weight_kilos do
+        .input-group
+          = f.input_field :weight_kilos, class: 'form-control'
+          span.input-group-addon кг
+    .col-md-2
+      = f.input :distance_meters do
+        .input-group
+          = f.input_field :distance_meters, class: 'form-control'
+          span.input-group-addon м
+    .col-md-2
+      = f.input :height_meters do
+        .input-group
+          = f.input_field :height_meters, class: 'form-control'
+          span.input-group-addon м
+    .col-md-2
+      = f.input :time_seconds do
+        .input-group
+          = f.input_field :time_seconds, class: 'form-control'
+          span.input-group-addon c

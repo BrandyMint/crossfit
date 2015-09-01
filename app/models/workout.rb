@@ -1,5 +1,6 @@
 class Workout < ActiveRecord::Base
   has_many :moves
+  has_many :logs
 
   validates :title, presence: true
   validates :rounds, presence: true, numericality: { only_integer: true, greater_than: 0 }

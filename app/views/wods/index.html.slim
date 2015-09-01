@@ -1,0 +1,15 @@
+= page_header 'Планирование тренировок' do
+  = link_to "Запланировать тренировку", new_wod_path, class: 'btn btn-default'
+
+- if @wods.any?
+  table.table
+    thead
+      th = Wod.human_attribute_name :date
+      th = Wod.human_attribute_name :workout_id
+      th
+    tbody
+      - @wods.each do |wod|
+        tr
+          td = wod.date
+          td = link_to wod.workout.title, wod.workout
+          td.controls = edit_link wod

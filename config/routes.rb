@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root 'dashboard#index'
+  root 'dashboard#show'
 
   get 'signup' => 'signups#new'
   post 'signup' => 'signups#create'
@@ -10,4 +10,6 @@ Rails.application.routes.draw do
 
   resources :exercises
   resources :workouts
+  resources :wods
+  resources :logs
 end

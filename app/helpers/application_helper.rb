@@ -1,4 +1,6 @@
 module ApplicationHelper
+  include WorkoutsHelper
+
   def nav_item(label, path, match)
     css_class = request.path =~ match ? 'active' : nil
 

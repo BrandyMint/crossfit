@@ -1,18 +1,4 @@
 = page_header "Тренировка «#{@workout.title}»" do
   = edit_link @workout, class: 'btn btn-default'
 
-- if @workout.description.present?
-  = simple_format @workout.description
-
-- if @workout.pre_workout.present?
-  h3 = Workout.human_attribute_name :pre_workout
-  = simple_format @workout.pre_workout
-
-- if @workout.special_pre_workout.present?
-  h3 = Workout.human_attribute_name :special_pre_workout
-  = simple_format @workout.special_pre_workout
-
-h3 Основная тренировка
-ul
-  - @workout.moves.each do |move|
-    li = display_move move
+= render @workout

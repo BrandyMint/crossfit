@@ -1,3 +1,6 @@
 ul.nav.navbar-nav
+  = nav_item 'Тренировка дня', root_path, %r{\A/\z}
+  = nav_item 'Результаты', logs_path, %r{/logs}
+  = nav_item 'Планирование', wods_path, %r{/wods}
   = nav_item 'Тренировки', workouts_path, %r{/workouts}
   = nav_item 'Упражнения', exercises_path, %r{/exercises}

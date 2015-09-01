@@ -1,6 +1,4 @@
 class WorkoutsController < ApplicationController
-  helper :moves
-
   def index
     load_workouts
   end

@@ -5,9 +5,11 @@
   table.table
     thead
       th = Workout.human_attribute_name :title
+      th = Workout.human_attribute_name :moves
       th
     tbody
       - @workouts.each do |workout|
         tr
-          td = workout.title
+          td = link_to workout.title, workout
+          td = display_moves workout.moves
           td.controls = edit_link workout

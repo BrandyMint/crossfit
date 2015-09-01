@@ -4,11 +4,19 @@ ru:
     few: '%{count} раза'
     many: '%{count} раз'
     other: '%{count} раз'
+  rounds:
+    one: '%{count} раунд'
+    few: '%{count} раунда'
+    many: '%{count} раундов'
+    other: '%{count} раундов'
   attributes:
+    date: Дата
     description: Описание
     distance_meters: Дистанция
     exercise_id: Упражнение
     height_meters: Высота
+    move_logs: Результаты
+    notes: Заметки
     post_workout: Заминка
     pre_workout: Разминка
     reps: Повторы
@@ -17,3 +25,5 @@ ru:
     time_seconds: Время
     title: Название
     weight_kilos: Вес
+    workout_id: Тренировка
+    moves: Движения

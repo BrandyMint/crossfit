@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150901112757) do
+ActiveRecord::Schema.define(version: 20150901122936) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -22,6 +22,33 @@ ActiveRecord::Schema.define(version: 20150901112757) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "logs", force: :cascade do |t|
+    t.integer  "user_id",    null: false
+    t.integer  "workout_id"
+    t.integer  "wod_id"
+    t.text     "notes"
+    t.date     "date",       null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "logs", ["user_id"], name: "index_logs_on_user_id", using: :btree
+  add_index "logs", ["wod_id"], name: "index_logs_on_wod_id", using: :btree
+  add_index "logs", ["workout_id"], name: "index_logs_on_workout_id", using: :btree
+
+  create_table "move_logs", force: :cascade do |t|
+    t.integer "log_id",                      null: false
+    t.integer "move_id",                     null: false
+    t.integer "reps",            default: 0, null: false
+    t.integer "weight_kilos",    default: 0, null: false
+    t.integer "distance_meters", default: 0, null: false
+    t.integer "height_meters",   default: 0, null: false
+    t.integer "time_seconds",    default: 0, null: false
+  end
+
+  add_index "move_logs", ["log_id"], name: "index_move_logs_on_log_id", using: :btree
+  add_index "move_logs", ["move_id"], name: "index_move_logs_on_move_id", using: :btree
 
   create_table "moves", force: :cascade do |t|
     t.integer "workout_id"
@@ -48,6 +75,15 @@ ActiveRecord::Schema.define(version: 20150901112757) do
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
 
+  create_table "wods", force: :cascade do |t|
+    t.integer  "workout_id", null: false
+    t.date     "date",       null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "wods", ["workout_id"], name: "index_wods_on_workout_id", using: :btree
+
   create_table "workouts", force: :cascade do |t|
     t.string   "title",                           null: false
     t.text     "description"
@@ -59,6 +95,12 @@ ActiveRecord::Schema.define(version: 20150901112757) do
     t.datetime "updated_at"
   end
 
+  add_foreign_key "logs", "users"
+  add_foreign_key "logs", "wods"
+  add_foreign_key "logs", "workouts"
+  add_foreign_key "move_logs", "logs"
+  add_foreign_key "move_logs", "moves"
   add_foreign_key "moves", "exercises"
   add_foreign_key "moves", "workouts"
+  add_foreign_key "wods", "workouts"
 end

@@ -1,0 +1,15 @@
+= page_header @date do
+  = link_to '<', url_for(date: @date - 1.day), class: 'btn btn-default'
+  = link_to '>', url_for(date: @date + 1.day), class: 'btn btn-default'
+
+- if @wod.present?
+  = render @wod.workout
+  hr
+  p
+    - if @wod.logged?(current_user)
+      | Так держать!
+    - else
+      = link_to 'Записать результат', new_log_path(wod: @wod), class: 'btn btn-default'
+
+- else
+  p Тренировок не запланировано.
