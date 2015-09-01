@@ -12,6 +12,7 @@ gem 'russian', '~> 0.6.0'
 gem 'sass-rails', '~> 5.0'
 gem 'simple_form', '~> 3.1'
 gem 'slim', '~> 3.0'
+gem 'sorcery', '~> 0.9.1'
 gem 'uglifier', '>= 1.3.0'
 
 group :development do

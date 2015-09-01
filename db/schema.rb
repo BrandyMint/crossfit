@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150901070755) do
+ActiveRecord::Schema.define(version: 20150901112757) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -35,6 +35,18 @@ ActiveRecord::Schema.define(version: 20150901070755) do
 
   add_index "moves", ["exercise_id"], name: "index_moves_on_exercise_id", using: :btree
   add_index "moves", ["workout_id"], name: "index_moves_on_workout_id", using: :btree
+
+  create_table "users", force: :cascade do |t|
+    t.string   "email",            null: false
+    t.string   "crypted_password"
+    t.string   "salt"
+    t.string   "first_name"
+    t.string   "last_name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
 
   create_table "workouts", force: :cascade do |t|
     t.string   "title",                           null: false

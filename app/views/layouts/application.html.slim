@@ -14,5 +14,8 @@ html lang=I18n.locale
       .container
         .navbar-header = link_to 'WorkoutYear', root_url, class: 'navbar-brand'
         = render 'layouts/nav'
+        = render 'layouts/current_user'
 
-    .container = yield
+    .container
+      = render 'layouts/flashes'
+      = yield
