@@ -1,46 +1,45 @@
 class ExercisesController < ApplicationController
   def index
-    load_exercises
+    render locals: { exercises: exercises }
   end
 
   def new
-    build_exercise
+    render locals: { exercise: build_exercise }
   end
 
   def create
-    build_exercise
-    save_exercise or render :new
+    build_exercise.save!
+    redirect_to exercises_url
+  rescue ActiveRecord::RecordInvalid => e
+    render :new, locals: { exercise: e.record }
   end
 
   def edit
-    load_exercise
+    render locals: { exercise: exercise }
   end
 
   def update
-    load_exercise
-    build_exercise
-    save_exercise or render :edit
+    exercise
+    build_exercise.save!
+    redirect_to exercises_url
+  rescue ActiveRecord::RecordInvalid => e
+    render :edit, locals: { exercise: e.record }
   end
 
   private
 
-  def load_exercises
+  def exercises
     @exercises ||= exercise_scope.all
   end
 
-  def load_exercise
+  def exercise
     @exercise ||= exercise_scope.find(params[:id])
   end
 
   def build_exercise
     @exercise ||= exercise_scope.new
     @exercise.attributes = exercise_params
-  end
-
-  def save_exercise
-    if @exercise.save
-      redirect_to exercises_url
-    end
+    @exercise
   end
 
   def exercise_scope
