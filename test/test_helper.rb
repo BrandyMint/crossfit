@@ -9,3 +9,11 @@ FactoryGirlSequences.reload
 class ActiveSupport::TestCase
   include FactoryGirl::Syntax::Methods
 end
+
+class ActionController::TestCase
+  include Sorcery::TestHelpers::Rails::Controller
+
+  def user
+    @user ||= create(:user, password: 'secret')
+  end
+end
