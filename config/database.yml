@@ -1,0 +1,16 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: 25
+  database: <%= ENV['CROSSFIT_DB_NAME'] %>
+  username: <%= ENV['CROSSFIT_DB_USER'] %>
+  password: <%= ENV['CROSSFIT_DB_PASSWORD'] %>
+
+development:
+  <<: *default
+
+test:
+  <<: *default
+
+production:
+  <<: *default

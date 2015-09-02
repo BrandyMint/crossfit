@@ -1,0 +1,5 @@
+= simple_form_for @wod do |f|
+  .row
+    .col-md-4 = f.input :date
+    .col-md-8 = f.association :workout, collection: Workout.all, include_blank: false
+  = f.button :submit

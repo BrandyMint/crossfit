@@ -1,0 +1,4 @@
+- if logged_in?
+  ul.nav.navbar-nav.navbar-right
+    li = link_to current_user.email, '#'
+    li = link_to 'Выйти', logout_path, method: :delete

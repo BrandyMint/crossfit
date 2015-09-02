@@ -1,0 +1,11 @@
+= simple_form_for @log do |f|
+  = hidden_field_tag 'wod', params[:wod]
+
+  = f.input :date
+
+  = f.simple_fields_for :move_logs do |move_log|
+    = render 'move_log_fields', f: move_log
+
+  = f.input :notes, as: :text, input_html: { rows: 5 }
+
+  = f.button :submit
