@@ -1,50 +1,51 @@
 class WorkoutsController < ApplicationController
   def index
-    load_workouts
+    render locals: { workouts: workouts }
   end
 
   def new
-    build_workout
+    render locals: { workout: workout }
   end
 
   def create
-    build_workout
-    save_workout or render :new
+    save_workout!
+    redirect_to workouts_url
+  rescue ActiveRecord::RecordInvalid => e
+    render :new, locals: { workout: e.record }
   end
 
   def show
-    load_workout
+    render locals: { workout: workout }
   end
 
   def edit
-    load_workout
+    render locals: { workout: workout }
   end
 
   def update
-    load_workout
-    build_workout
-    save_workout or render :edit
+    save_workout!
+    redirect_to workouts_url
+  rescue ActiveRecord::RecordInvalid => e
+    render :edit, locals: { workout: e.record }
   end
 
   private
 
-  def load_workouts
+  def workouts
     @workouts ||= workout_scope.all
   end
 
-  def load_workout
-    @workout ||= workout_scope.find(params[:id])
-  end
-
-  def build_workout
-    @workout ||= workout_scope.new
-    @workout.attributes = workout_params
-  end
-
-  def save_workout
-    if @workout.save
-      redirect_to @workout
+  def workout
+    @workout ||= if params[:id].present?
+      workout_scope.find(params[:id])
+    else
+      workout_scope.new
     end
+  end
+
+  def save_workout!
+    workout.attributes = workout_params
+    workout.save!
   end
 
   def workout_scope
