@@ -26,10 +26,7 @@ end
 
 group :development, :test do
   gem 'awesome_pry'
-  gem 'spring'
-end
-
-group :test do
   gem 'factory_girl_rails'
   gem 'factory_girl_sequences'
+  gem 'spring'
 end
