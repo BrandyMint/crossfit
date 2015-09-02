@@ -10,3 +10,11 @@
 td.controls {
   text-align: right;
 }
+
+.alert-notice {
+  @extend .alert-success;
+}
+
+.alert-alert {
+  @extend .alert-danger;
+}
