@@ -19,6 +19,7 @@ group :development do
   gem 'better_errors'
   gem 'binding_of_caller'
   gem 'guard'
+  gem 'guard-bundler'
   gem 'guard-minitest'
   gem 'quiet_assets'
 end
@@ -26,4 +27,9 @@ end
 group :development, :test do
   gem 'awesome_pry'
   gem 'spring'
+end
+
+group :test do
+  gem 'factory_girl_rails'
+  gem 'factory_girl_sequences'
 end
