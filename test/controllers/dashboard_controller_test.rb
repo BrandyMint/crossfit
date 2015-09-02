@@ -6,6 +6,10 @@ class DashboardControllerTest < ActionController::TestCase
     login_user user
   end
 
+  def test_access
+    assert_access_denied_for_actions %i(show)
+  end
+
   def test_show
     get :show
 
