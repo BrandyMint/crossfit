@@ -2,4 +2,6 @@ h1 Вход
 = simple_form_for User.new, url: login_path do |f|
   = f.input :email
   = f.input :password
-  = f.button :submit
+  = f.button :submit, 'Войти'
+  hr
+  p = link_to 'Регистрация', signup_path
