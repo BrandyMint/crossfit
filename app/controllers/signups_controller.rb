@@ -2,25 +2,26 @@ class SignupsController < ApplicationController
   skip_before_filter :require_login
 
   def new
-    build_user
+    render locals: { user: user }
   end
 
   def create
-    build_user
-    save_user or render :new
+    save_user!
+    auto_login(user)
+    redirect_to root_url
+  rescue ActiveRecord::RecordInvalid => e
+    render :new, locals: { user: e.record }
   end
 
   private
 
-  def build_user
+  def user
     @user ||= user_scope.new
-    @user.attributes = user_params
   end
 
-  def save_user
-    if @user.save
-      redirect_to root_url
-    end
+  def save_user!
+    user.attributes = user_params
+    user.save!
   end
 
   def user_scope

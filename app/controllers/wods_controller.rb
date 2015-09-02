@@ -1,47 +1,47 @@
 class WodsController < ApplicationController
   def index
-    load_wods
+    render locals: { wods: wods }
   end
 
   def new
-    build_wod
+    render locals: { wod: wod }
   end
 
   def create
-    build_wod
-    save_wod or render :new
+    save_wod!
+    redirect_to wods_url
+  rescue ActiveRecord::RecordInvalid => e
+    render :new, locals: { wod: e.record }
   end
 
   def edit
-    load_wod
-    build_wod
+    render locals: { wod: wod }
   end
 
   def update
-    load_wod
-    build_wod
-    save_wod or render :edit
+    save_wod!
+    redirect_to wods_url
+  rescue ActiveRecord::RecordInvalid => e
+    render :edit, locals: { wod: e.record }
   end
 
   private
 
-  def load_wods
+  def wods
     @wods ||= wod_scope.chrono
   end
 
-  def load_wod
-    @wod ||= wod_scope.find(params[:id])
-  end
-
-  def build_wod
-    @wod ||= wod_scope.new
-    @wod.attributes = wod_params
-  end
-
-  def save_wod
-    if @wod.save
-      redirect_to wods_url
+  def wod
+    @wod ||= if params[:id].present?
+      wod_scope.find(params[:id])
+    else
+      wod_scope.new
     end
+  end
+
+  def save_wod!
+    wod.attributes = wod_params
+    wod.save!
   end
 
   def wod_scope
