@@ -14,6 +14,8 @@ gem 'simple_form', '~> 3.1'
 gem 'slim', '~> 3.0'
 gem 'sorcery', '~> 0.9.1'
 gem 'uglifier', '>= 1.3.0'
+# Use Capistrano for deployment
+# gem 'capistrano-rails', group: :development
 
 group :development do
   gem 'better_errors'
@@ -27,3 +29,12 @@ group :development, :test do
   gem 'awesome_pry'
   gem 'spring'
 end
+
+group :deploy do
+  gem 'capistrano', '~> 3.2.1', :require => false
+  gem 'capistrano-rbenv', '~> 2.0', :require => false
+  gem 'capistrano-rails', '~> 1.1', :require => false
+  gem 'capistrano-bundler', :require => false
+  gem "capistrano-db-tasks", :require => false
+end
+
