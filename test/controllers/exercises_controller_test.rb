@@ -10,12 +10,14 @@ class ExercisesControllerTest < ActionController::TestCase
     get :index
 
     assert_response :success
+    assert_template :index
   end
 
   def test_new
     get :new
 
     assert_response :success
+    assert_template :new
   end
 
   def test_create
@@ -30,6 +32,7 @@ class ExercisesControllerTest < ActionController::TestCase
     get :edit, id: exercise
 
     assert_response :success
+    assert_template :edit
   end
 
   def test_update

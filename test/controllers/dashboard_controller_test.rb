@@ -10,5 +10,6 @@ class DashboardControllerTest < ActionController::TestCase
     get :show
 
     assert_response :success
+    assert_template :show
   end
 end
