@@ -6,6 +6,10 @@ class WodsControllerTest < ActionController::TestCase
     login_user user
   end
 
+  def test_access
+    assert_access_denied_for_actions %i(index new create edit update)
+  end
+
   def test_index
     get :index
 

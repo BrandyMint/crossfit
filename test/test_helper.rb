@@ -16,4 +16,18 @@ class ActionController::TestCase
   def user
     @user ||= create(:user, password: 'secret')
   end
+
+  def assert_access_denied_for_actions(actions = [])
+    logout_user
+
+    actions.each do |action|
+      params = if %i(show edit update).include?(action)
+        { id: 1 }
+      else
+        {}
+      end
+      get action, params
+      assert_redirected_to login_path
+    end
+  end
 end

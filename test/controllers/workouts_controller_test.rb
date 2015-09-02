@@ -6,6 +6,10 @@ class WorkoutsControllerTest < ActionController::TestCase
     login_user user
   end
 
+  def test_access
+    assert_access_denied_for_actions %i(index new create show edit update)
+  end
+
   def test_index
     get :index
 
@@ -25,6 +29,14 @@ class WorkoutsControllerTest < ActionController::TestCase
       post :create, workout: { title: generate(:string) }
     end
     assert_redirected_to workouts_path
+  end
+
+  def test_show
+    workout = create(:workout)
+    get :show, id: workout
+
+    assert_response :success
+    assert_template :show
   end
 
   def test_edit
