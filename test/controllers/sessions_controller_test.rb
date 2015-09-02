@@ -5,12 +5,14 @@ class SessionsControllerTest < ActionController::TestCase
     get :new
 
     assert_response :success
+    assert_template :new
   end
 
   def test_create_wrong_credentials
     post :create, user: { email: 'not@here.com', password: 'wrongpass' }
 
     assert_response :success
+    assert_template :new
   end
 
   def test_create_correct_credentials

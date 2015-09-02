@@ -10,12 +10,14 @@ class LogsControllerTest < ActionController::TestCase
     get :index
 
     assert_response :success
+    assert_template :index
   end
 
   def test_new
     get :new, wod: create(:wod)
 
     assert_response :success
+    assert_template :new
   end
 
   def test_create
@@ -30,6 +32,7 @@ class LogsControllerTest < ActionController::TestCase
     get :edit, id: log
 
     assert_response :success
+    assert_template :edit
   end
 
   def test_update
