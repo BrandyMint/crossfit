@@ -54,6 +54,8 @@ GEM
     bootstrap-sass (3.3.5.1)
       autoprefixer-rails (>= 5.0.0.1)
       sass (>= 3.3.0)
+    bugsnag (2.8.12)
+      json (~> 1.7, >= 1.7.7)
     builder (3.2.2)
     cocoon (1.2.6)
     coderay (1.1.0)
@@ -211,6 +213,7 @@ DEPENDENCIES
   better_errors
   binding_of_caller
   bootstrap-sass (~> 3.3)
+  bugsnag (~> 2.8)
   cocoon (~> 1.2.6)
   coffee-rails (~> 4.1.0)
   dotenv-rails (~> 2.0)
