@@ -54,6 +54,8 @@ GEM
     bootstrap-sass (3.3.5.1)
       autoprefixer-rails (>= 5.0.0.1)
       sass (>= 3.3.0)
+    bugsnag (2.8.12)
+      json (~> 1.7, >= 1.7.7)
     builder (3.2.2)
     capistrano (3.2.1)
       i18n
@@ -252,6 +254,7 @@ DEPENDENCIES
   better_errors
   binding_of_caller
   bootstrap-sass (~> 3.3)
+  bugsnag (~> 2.8)
   capistrano (~> 3.2.1)
   capistrano-bundler
   capistrano-db-tasks

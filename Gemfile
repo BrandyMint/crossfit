@@ -4,6 +4,7 @@ gem 'rails', '4.2.4'
 # Use Unicorn as the app server
 gem 'unicorn'
 gem 'bootstrap-sass', '~> 3.3'
+gem 'bugsnag', '~> 2.8'
 gem 'cocoon', '~> 1.2.6'
 gem 'coffee-rails', '~> 4.1.0'
 gem 'dotenv-rails', '~> 2.0'
@@ -41,4 +42,3 @@ group :deploy do
   gem 'capistrano-bundler', :require => false
   gem "capistrano-db-tasks", :require => false
 end
-
