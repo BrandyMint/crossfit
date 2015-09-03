@@ -4,11 +4,11 @@ class ExercisesController < ApplicationController
   end
 
   def new
-    render locals: { exercise: build_exercise }
+    render locals: { exercise: exercise }
   end
 
   def create
-    build_exercise.save!
+    save_exercise!
     redirect_to exercises_url
   rescue ActiveRecord::RecordInvalid => e
     render :new, locals: { exercise: e.record }
@@ -19,8 +19,7 @@ class ExercisesController < ApplicationController
   end
 
   def update
-    exercise
-    build_exercise.save!
+    save_exercise!
     redirect_to exercises_url
   rescue ActiveRecord::RecordInvalid => e
     render :edit, locals: { exercise: e.record }
@@ -33,13 +32,16 @@ class ExercisesController < ApplicationController
   end
 
   def exercise
-    @exercise ||= exercise_scope.find(params[:id])
+    @exercise ||= if params[:id].present?
+      exercise_scope.find(params[:id])
+    else
+      exercise_scope.new
+    end
   end
 
-  def build_exercise
-    @exercise ||= exercise_scope.new
-    @exercise.attributes = exercise_params
-    @exercise
+  def save_exercise!
+    exercise.attributes = exercise_params
+    exercise.save!
   end
 
   def exercise_scope

@@ -1,6 +1,6 @@
 = page_header 'Результаты'
 
-- if @logs.any?
+- if logs.any?
   table.table
     thead
       th = Exercise.human_attribute_name :date
@@ -8,7 +8,7 @@
       th = Exercise.human_attribute_name :notes
       th
     tbody
-      - @logs.each do |log|
+      - logs.each do |log|
         tr
           td = log.date
           td = display_moves log.move_logs

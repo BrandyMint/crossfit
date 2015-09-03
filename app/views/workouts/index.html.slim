@@ -1,14 +1,14 @@
 = page_header 'Тренировки' do
   = link_to "Добавить тренировку", new_workout_path, class: 'btn btn-default'
 
-- if @workouts.any?
+- if workouts.any?
   table.table
     thead
       th = Workout.human_attribute_name :title
       th = Workout.human_attribute_name :moves
       th
     tbody
-      - @workouts.each do |workout|
+      - workouts.each do |workout|
         tr
           td = link_to workout.title, workout
           td = display_moves workout.moves

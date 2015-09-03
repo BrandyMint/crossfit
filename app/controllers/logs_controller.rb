@@ -1,56 +1,55 @@
 class LogsController < ApplicationController
   def index
-    load_logs
+    render locals: { logs: logs }
   end
 
   def new
-    load_wod
-    build_log
-    @log.prepopulate_data_from_workout
+    log.prepopulate_data_from_workout
+    render locals: { log: log }
   end
 
   def create
-    load_wod
-    build_log
-    save_log or render :new
+    save_log!
+    redirect_to logs_url
+  rescue ActiveRecord::RecordInvalid => e
+    render :new, locals: { log: e.record }
   end
 
   def edit
-    load_log
+    render locals: { log: log }
   end
 
   def update
-    load_log
-    build_log
-    save_log or render :edit
+    save_log!
+    redirect_to logs_url
+  rescue ActiveRecord::RecordInvalid => e
+    render :edit, locals: { log: e.record }
   end
 
   private
 
-  def load_logs
+  def logs
     @logs ||= log_scope.all
   end
 
-  def load_log
-    @log ||= log_scope.find(params[:id])
-  end
-
-  def build_log
-    @log ||= log_scope.new_from_wod(@wod)
-    @log.attributes = log_params
-  end
-
-  def save_log
-    if @log.save
-      redirect_to logs_url
+  def log
+    @log ||= if params[:id].present?
+      log_scope.find(params[:id])
+    else
+      log_scope.new_from_wod(wod)
     end
+  end
+
+  def save_log!
+    log.attributes = log_params
+    log.save!
   end
 
   def log_scope
     current_user.logs
   end
 
-  def load_wod
+  def wod
     @wod ||= wod_scope.find(params[:wod])
   end
 
