@@ -44,7 +44,7 @@ end
 group :deploy do
   gem 'capistrano', '~> 3.2.1', :require => false
   gem 'capistrano-rbenv', '~> 2.0', :require => false
-  gem 'capistrano-rails', '~> 1.1', :require => false
+  gem 'capistrano-rails','~> 1.1.3', :require => false
   gem 'capistrano-bundler', :require => false
   gem "capistrano-db-tasks", :require => false
 end
