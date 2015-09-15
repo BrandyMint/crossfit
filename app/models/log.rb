@@ -1,8 +1,8 @@
 class Log < ActiveRecord::Base
   belongs_to :user
-  belongs_to :workout
   belongs_to :wod
   has_many :move_logs
+  belongs_to :workout # throuch wod
 
   validates :date, presence: true
 

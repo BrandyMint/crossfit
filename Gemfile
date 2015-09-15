@@ -16,6 +16,8 @@ gem 'simple_form', '~> 3.1'
 gem 'slim', '~> 3.0'
 gem 'sorcery', '~> 0.9.1'
 gem 'uglifier', '>= 1.3.0'
+gem 'smsc'
+gem 'capistrano-shell'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
