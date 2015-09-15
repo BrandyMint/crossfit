@@ -18,6 +18,10 @@ gem 'sorcery', '~> 0.9.1'
 gem 'uglifier', '>= 1.3.0'
 gem 'smsc'
 gem 'capistrano-shell'
+gem 'sprockets-rails'
+gem 'sprockets'
+
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
