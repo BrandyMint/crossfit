@@ -21,5 +21,19 @@ module Crossfit
 
     # Do not swallow errors in after_commit/after_rollback callbacks.
     config.active_record.raise_in_transactional_callbacks = true
+
+    config.autoload_paths += Dir[
+      "#{Rails.root}/app/helpers",
+      "#{Rails.root}/app/concerns",
+      "#{Rails.root}/app/workers",
+      "#{Rails.root}/app/services",
+      "#{Rails.root}/app/validators",
+      "#{Rails.root}/app/decorators",
+      "#{Rails.root}/app/errors",
+      "#{Rails.root}/app/forms",
+      "#{Rails.root}/app/entities",
+      "#{Rails.root}/app/navigation_renderers"
+    ]
+
   end
 end

@@ -11,80 +11,120 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150901122936) do
+ActiveRecord::Schema.define(version: 20150915094625) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "exercises", force: :cascade do |t|
-    t.string   "title",       null: false
-    t.text     "description"
+  create_table "active_admin_comments", force: :cascade do |t|
+    t.string   "namespace"
+    t.text     "body"
+    t.string   "resource_id",   null: false
+    t.string   "resource_type", null: false
+    t.integer  "author_id"
+    t.string   "author_type"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  create_table "logs", force: :cascade do |t|
-    t.integer  "user_id",    null: false
-    t.integer  "workout_id"
-    t.integer  "wod_id"
+  add_index "active_admin_comments", ["author_type", "author_id"], name: "index_active_admin_comments_on_author_type_and_author_id", using: :btree
+  add_index "active_admin_comments", ["namespace"], name: "index_active_admin_comments_on_namespace", using: :btree
+  add_index "active_admin_comments", ["resource_type", "resource_id"], name: "index_active_admin_comments_on_resource_type_and_resource_id", using: :btree
+
+  create_table "athlete_wod_log_movements", force: :cascade do |t|
+    t.integer "athlete_wod_log_id",              null: false
+    t.integer "workout_movement_id",             null: false
+    t.integer "reps",                default: 0, null: false
+    t.integer "weight_kilos",        default: 0, null: false
+    t.integer "distance_meters",     default: 0, null: false
+    t.integer "height_meters",       default: 0, null: false
+    t.integer "time_seconds",        default: 0, null: false
+  end
+
+  add_index "athlete_wod_log_movements", ["athlete_wod_log_id", "workout_movement_id"], name: "index_athlete_wod_log_movements_unique", unique: true, using: :btree
+  add_index "athlete_wod_log_movements", ["athlete_wod_log_id"], name: "index_athlete_wod_log_movements_on_athlete_wod_log_id", using: :btree
+  add_index "athlete_wod_log_movements", ["workout_movement_id"], name: "index_athlete_wod_log_movements_on_workout_movement_id", using: :btree
+
+  create_table "athlete_wod_logs", force: :cascade do |t|
+    t.integer  "athlete_wod_id", null: false
     t.text     "notes"
-    t.date     "date",       null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  add_index "logs", ["user_id"], name: "index_logs_on_user_id", using: :btree
-  add_index "logs", ["wod_id"], name: "index_logs_on_wod_id", using: :btree
-  add_index "logs", ["workout_id"], name: "index_logs_on_workout_id", using: :btree
-
-  create_table "move_logs", force: :cascade do |t|
-    t.integer "log_id",                      null: false
-    t.integer "move_id",                     null: false
-    t.integer "reps",            default: 0, null: false
-    t.integer "weight_kilos",    default: 0, null: false
-    t.integer "distance_meters", default: 0, null: false
-    t.integer "height_meters",   default: 0, null: false
-    t.integer "time_seconds",    default: 0, null: false
-  end
-
-  add_index "move_logs", ["log_id"], name: "index_move_logs_on_log_id", using: :btree
-  add_index "move_logs", ["move_id"], name: "index_move_logs_on_move_id", using: :btree
-
-  create_table "moves", force: :cascade do |t|
-    t.integer "workout_id"
-    t.integer "exercise_id"
-    t.integer "reps",            default: 0, null: false
-    t.integer "weight_kilos",    default: 0, null: false
-    t.integer "distance_meters", default: 0, null: false
-    t.integer "height_meters",   default: 0, null: false
-    t.integer "time_seconds",    default: 0, null: false
-  end
-
-  add_index "moves", ["exercise_id"], name: "index_moves_on_exercise_id", using: :btree
-  add_index "moves", ["workout_id"], name: "index_moves_on_workout_id", using: :btree
-
-  create_table "users", force: :cascade do |t|
-    t.string   "email",            null: false
-    t.string   "crypted_password"
-    t.string   "salt"
-    t.string   "first_name"
-    t.string   "last_name"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
-
-  create_table "wods", force: :cascade do |t|
+  create_table "athlete_wods", force: :cascade do |t|
+    t.integer  "trainer_id", null: false
+    t.integer  "athlete_id", null: false
     t.integer  "workout_id", null: false
     t.date     "date",       null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  add_index "wods", ["workout_id"], name: "index_wods_on_workout_id", using: :btree
+  add_index "athlete_wods", ["athlete_id", "date"], name: "index_athlete_wods_on_athlete_id_and_date", unique: true, using: :btree
+
+  create_table "memberships", force: :cascade do |t|
+    t.integer  "member_id",  null: false
+    t.integer  "team_id",    null: false
+    t.string   "role",       null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "memberships", ["member_id"], name: "index_memberships_on_member_id", using: :btree
+  add_index "memberships", ["team_id", "member_id"], name: "index_memberships_on_team_id_and_member_id", unique: true, using: :btree
+
+  create_table "movements", force: :cascade do |t|
+    t.integer "owner_id"
+    t.string  "title",                         null: false
+    t.integer "reps",            default: 0,   null: false
+    t.decimal "weight_kilos",    default: 0.0, null: false
+    t.decimal "distance_meters", default: 0.0, null: false
+    t.decimal "height_meters",   default: 0.0, null: false
+    t.integer "time_seconds",    default: 0,   null: false
+  end
+
+  add_index "movements", ["title"], name: "index_movements_on_title", unique: true, using: :btree
+
+  create_table "teams", force: :cascade do |t|
+    t.string   "title",      null: false
+    t.string   "slug",       null: false
+    t.integer  "owner_id",   null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.string   "email"
+    t.string   "phone",            null: false
+    t.string   "crypted_password"
+    t.string   "salt"
+    t.string   "pin",              null: false
+    t.string   "full_name"
+    t.string   "nick",             null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
+  add_index "users", ["nick"], name: "index_users_on_nick", unique: true, using: :btree
+  add_index "users", ["phone"], name: "index_users_on_phone", unique: true, using: :btree
+
+  create_table "workout_movements", force: :cascade do |t|
+    t.integer  "workout_id",                           null: false
+    t.integer  "original_movement_id"
+    t.string   "custom_title"
+    t.integer  "custom_reps",            default: 0,   null: false
+    t.decimal  "custom_weight_kilos",    default: 0.0, null: false
+    t.decimal  "custom_distance_meters", default: 0.0, null: false
+    t.decimal  "custom_height_meters",   default: 0.0, null: false
+    t.integer  "custom_time_seconds",    default: 0,   null: false
+    t.datetime "created_at",                           null: false
+    t.datetime "updated_at",                           null: false
+  end
 
   create_table "workouts", force: :cascade do |t|
+    t.integer  "owner_id"
     t.string   "title",                           null: false
     t.text     "description"
     t.text     "pre_workout"
@@ -95,12 +135,14 @@ ActiveRecord::Schema.define(version: 20150901122936) do
     t.datetime "updated_at"
   end
 
-  add_foreign_key "logs", "users"
-  add_foreign_key "logs", "wods"
-  add_foreign_key "logs", "workouts"
-  add_foreign_key "move_logs", "logs"
-  add_foreign_key "move_logs", "moves"
-  add_foreign_key "moves", "exercises"
-  add_foreign_key "moves", "workouts"
-  add_foreign_key "wods", "workouts"
+  add_foreign_key "athlete_wod_log_movements", "athlete_wod_logs"
+  add_foreign_key "athlete_wod_log_movements", "workout_movements"
+  add_foreign_key "athlete_wods", "users", column: "athlete_id"
+  add_foreign_key "athlete_wods", "users", column: "trainer_id"
+  add_foreign_key "athlete_wods", "workouts"
+  add_foreign_key "movements", "users", column: "owner_id"
+  add_foreign_key "teams", "users", column: "owner_id"
+  add_foreign_key "workout_movements", "movements", column: "original_movement_id"
+  add_foreign_key "workout_movements", "workouts"
+  add_foreign_key "workouts", "users", column: "owner_id"
 end

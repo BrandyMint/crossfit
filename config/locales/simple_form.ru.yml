@@ -9,3 +9,18 @@ ru:
     submit:
       create: Добавить
       update: Сохранить
+
+  error_notification:
+    default_message: "Обнаружены ошибки,<br /> пожалуйста, взгляните на&nbsp;них"
+    blank: "Не может быть пустым"
+
+  button:
+    disable_with:
+      sending: Отправляем...
+      saving: Сохраняем...
+      waiting: Подождите...
+      adding: Добавляем...
+  labels:
+    defaults:
+      name: Имя
+      phone: Телефон

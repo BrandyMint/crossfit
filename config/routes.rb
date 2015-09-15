@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
-  root 'dashboard#show'
+  ActiveAdmin.routes(self)
+  root 'welcome#index'
+
+  resource :dashboard
 
   get 'signup' => 'signups#new'
   post 'signup' => 'signups#create'

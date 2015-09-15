@@ -1,0 +1,110 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.9~svn20110310	//
+ApplicationAuthorizer	app/authorizers/application_authorizer.rb	/^class ApplicationAuthorizer < Authority::Authorizer$/;"	c
+ApplicationController	app/controllers/application_controller.rb	/^class ApplicationController < ActionController::Base$/;"	c
+ApplicationHelper	app/helpers/application_helper.rb	/^module ApplicationHelper$/;"	m
+AthleteWod	app/models/athlete_wod.rb	/^class AthleteWod < ActiveRecord::Base$/;"	c
+AthleteWodLog	app/models/athlete_wod_log.rb	/^class AthleteWodLog < ActiveRecord::Base$/;"	c
+AthleteWodLogMovement	app/models/athlete_wod_log_movement.rb	/^class AthleteWodLogMovement < ActiveRecord::Base$/;"	c
+DashboardController	app/controllers/dashboard_controller.rb	/^class DashboardController < ApplicationController$/;"	c
+LogsController	app/controllers/logs_controller.rb	/^class LogsController < ApplicationController$/;"	c
+Membership	app/models/membership.rb	/^class Membership < ActiveRecord::Base$/;"	c
+MembershipRoles	app/models/concerns/membership_roles.rb	/^module MembershipRoles$/;"	m
+Movement	app/models/movement.rb	/^class Movement < ActiveRecord::Base$/;"	c
+PhoneValidator	app/validators/phone_validator.rb	/^class PhoneValidator < ActiveModel::EachValidator$/;"	c
+SessionsController	app/controllers/sessions_controller.rb	/^class SessionsController < ApplicationController$/;"	c
+SignupsController	app/controllers/signups_controller.rb	/^class SignupsController < ApplicationController$/;"	c
+SubmoduleStrategy	lib/capistrano/submodule_strategy.rb	/^module SubmoduleStrategy$/;"	m
+Team	app/models/team.rb	/^class Team < ActiveRecord::Base$/;"	c
+User	app/models/user.rb	/^class User < ActiveRecord::Base$/;"	c
+UserDecorator	app/decorators/user_decorator.rb	/^class UserDecorator < Draper::Decorator$/;"	c
+WelcomeController	app/controllers/welcome_controller.rb	/^class WelcomeController < ApplicationController$/;"	c
+WelcomeHelper	app/helpers/welcome_helper.rb	/^module WelcomeHelper$/;"	m
+WodsController	app/controllers/wods_controller.rb	/^class WodsController < ApplicationController$/;"	c
+Workout	app/models/workout.rb	/^class Workout < ActiveRecord::Base$/;"	c
+WorkoutMovement	app/models/workout_movement.rb	/^class WorkoutMovement < ActiveRecord::Base$/;"	c
+WorkoutsController	app/controllers/workouts_controller.rb	/^class WorkoutsController < ApplicationController$/;"	c
+WorkoutsHelper	app/helpers/workouts_helper.rb	/^module WorkoutsHelper$/;"	m
+add_owner_as_member	app/models/team.rb	/^  def add_owner_as_member$/;"	f	class:Team
+admin?	app/models/concerns/membership_roles.rb	/^  def admin?$/;"	f	class:MembershipRoles
+app_version	app/helpers/application_helper.rb	/^  def app_version$/;"	f	class:ApplicationHelper
+avatar	app/decorators/user_decorator.rb	/^  def avatar$/;"	f	class:UserDecorator
+check	lib/capistrano/submodule_strategy.rb	/^  def check$/;"	f	class:SubmoduleStrategy
+chrono	app/models/athlete_wod.rb	/^  scope :chrono, -> { order(date: :desc) }$/;"	r
+clone	lib/capistrano/submodule_strategy.rb	/^  def clone$/;"	f	class:SubmoduleStrategy
+create	app/controllers/logs_controller.rb	/^  def create$/;"	f	class:LogsController
+create	app/controllers/sessions_controller.rb	/^  def create$/;"	f	class:SessionsController
+create	app/controllers/signups_controller.rb	/^  def create$/;"	f	class:SignupsController
+create	app/controllers/wods_controller.rb	/^  def create$/;"	f	class:WodsController
+create	app/controllers/workouts_controller.rb	/^  def create$/;"	f	class:WorkoutsController
+current_date	app/controllers/dashboard_controller.rb	/^  def current_date$/;"	f	class:DashboardController
+default	app/authorizers/application_authorizer.rb	/^  def self.default(adjective, user)$/;"	F	class:ApplicationAuthorizer
+destroy	app/controllers/sessions_controller.rb	/^  def destroy$/;"	f	class:SessionsController
+display_move	app/helpers/workouts_helper.rb	/^  def display_move(move)$/;"	f	class:WorkoutsHelper
+display_moves	app/helpers/workouts_helper.rb	/^  def display_moves(moves)$/;"	f	class:WorkoutsHelper
+distance_meters_label	app/helpers/workouts_helper.rb	/^  def distance_meters_label(move)$/;"	f	class:WorkoutsHelper
+edit	app/controllers/logs_controller.rb	/^  def edit$/;"	f	class:LogsController
+edit	app/controllers/wods_controller.rb	/^  def edit$/;"	f	class:WodsController
+edit	app/controllers/workouts_controller.rb	/^  def edit$/;"	f	class:WorkoutsController
+edit_link	app/helpers/application_helper.rb	/^  def edit_link(record, opts = {})$/;"	f
+fetch_revision	lib/capistrano/submodule_strategy.rb	/^  def fetch_revision$/;"	f	class:SubmoduleStrategy
+find_wod_for_date	app/models/athlete_wod.rb	/^  def self.find_wod_for_date(date)$/;"	F	class:AthleteWod
+generate_pin	app/models/user.rb	/^  def generate_pin$/;"	f	class:User
+height_meters_label	app/helpers/workouts_helper.rb	/^  def height_meters_label(move)$/;"	f	class:WorkoutsHelper
+index	app/controllers/logs_controller.rb	/^  def index$/;"	f	class:LogsController
+index	app/controllers/wods_controller.rb	/^  def index$/;"	f	class:WodsController
+index	app/controllers/workouts_controller.rb	/^  def index$/;"	f	class:WorkoutsController
+label_for	app/helpers/workouts_helper.rb	/^  def label_for(param, move)$/;"	f	class:WorkoutsHelper
+log	app/controllers/logs_controller.rb	/^  def log$/;"	f	class:LogsController
+log_params	app/controllers/logs_controller.rb	/^  def log_params$/;"	f
+log_scope	app/controllers/logs_controller.rb	/^  def log_scope$/;"	f
+logged?	app/models/athlete_wod.rb	/^  def logged?(user)$/;"	f	class:AthleteWod
+logs	app/controllers/logs_controller.rb	/^  def logs$/;"	f	class:LogsController
+nav_item	app/helpers/application_helper.rb	/^  def nav_item(label, path, match)$/;"	f	class:ApplicationHelper
+new	app/controllers/logs_controller.rb	/^  def new$/;"	f	class:LogsController
+new	app/controllers/sessions_controller.rb	/^  def new$/;"	f	class:SessionsController
+new	app/controllers/signups_controller.rb	/^  def new$/;"	f	class:SignupsController
+new	app/controllers/wods_controller.rb	/^  def new$/;"	f	class:WodsController
+new	app/controllers/workouts_controller.rb	/^  def new$/;"	f	class:WorkoutsController
+page_header	app/helpers/application_helper.rb	/^  def page_header(page_title, &block)$/;"	f	class:ApplicationHelper
+params	app/models/movement.rb	/^  def params$/;"	f	class:Movement
+permitted_params	app/admin/membership.rb	/^    def permitted_params$/;"	f
+permitted_params	app/admin/movement.rb	/^    def permitted_params$/;"	f
+permitted_params	app/admin/team.rb	/^    def permitted_params$/;"	f
+permitted_params	app/admin/user.rb	/^    def permitted_params$/;"	f
+release	lib/capistrano/submodule_strategy.rb	/^  def release$/;"	f	class:SubmoduleStrategy
+reps_label	app/helpers/workouts_helper.rb	/^  def reps_label(move)$/;"	f	class:WorkoutsHelper
+save_log!	app/controllers/logs_controller.rb	/^  def save_log!$/;"	f
+save_user!	app/controllers/signups_controller.rb	/^  def save_user!$/;"	f	class:SignupsController
+save_wod!	app/controllers/wods_controller.rb	/^  def save_wod!$/;"	f
+save_workout!	app/controllers/workouts_controller.rb	/^  def save_workout!$/;"	f
+show	app/controllers/dashboard_controller.rb	/^  def show$/;"	f	class:DashboardController
+show	app/controllers/workouts_controller.rb	/^  def show$/;"	f	class:WorkoutsController
+test	lib/capistrano/submodule_strategy.rb	/^  def test$/;"	f	class:SubmoduleStrategy
+time_seconds_label	app/helpers/workouts_helper.rb	/^  def time_seconds_label(move)$/;"	f	class:WorkoutsHelper
+update	app/controllers/logs_controller.rb	/^  def update$/;"	f	class:LogsController
+update	app/controllers/wods_controller.rb	/^  def update$/;"	f	class:WodsController
+update	app/controllers/workouts_controller.rb	/^  def update$/;"	f	class:WorkoutsController
+update	lib/capistrano/submodule_strategy.rb	/^  def update$/;"	f	class:SubmoduleStrategy
+user	app/controllers/signups_controller.rb	/^  def user$/;"	f	class:SignupsController
+user_params	app/controllers/sessions_controller.rb	/^  def user_params$/;"	f	class:SessionsController
+user_params	app/controllers/signups_controller.rb	/^  def user_params$/;"	f	class:SignupsController
+user_scope	app/controllers/signups_controller.rb	/^  def user_scope$/;"	f	class:SignupsController
+validate_each	app/validators/phone_validator.rb	/^  def validate_each(record, attribute, value)$/;"	f	class:PhoneValidator
+weight_kilos_label	app/helpers/workouts_helper.rb	/^  def weight_kilos_label(move)$/;"	f	class:WorkoutsHelper
+wod	app/controllers/dashboard_controller.rb	/^  def wod$/;"	f
+wod	app/controllers/logs_controller.rb	/^  def wod$/;"	f
+wod	app/controllers/wods_controller.rb	/^  def wod$/;"	f	class:WodsController
+wod_params	app/controllers/wods_controller.rb	/^  def wod_params$/;"	f
+wod_scope	app/controllers/dashboard_controller.rb	/^  def wod_scope$/;"	f
+wod_scope	app/controllers/logs_controller.rb	/^  def wod_scope$/;"	f
+wod_scope	app/controllers/wods_controller.rb	/^  def wod_scope$/;"	f
+wods	app/controllers/wods_controller.rb	/^  def wods$/;"	f	class:WodsController
+workout	app/controllers/workouts_controller.rb	/^  def workout$/;"	f	class:WorkoutsController
+workout_params	app/controllers/workouts_controller.rb	/^  def workout_params$/;"	f
+workout_scope	app/controllers/workouts_controller.rb	/^  def workout_scope$/;"	f
+workouts	app/controllers/workouts_controller.rb	/^  def workouts$/;"	f	class:WorkoutsController

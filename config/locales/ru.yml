@@ -10,6 +10,8 @@ ru:
     many: '%{count} раундов'
     other: '%{count} раундов'
   attributes:
+    owner: Владелец
+    role: Роль
     date: Дата
     description: Описание
     distance_meters: Дистанция
@@ -26,4 +28,6 @@ ru:
     title: Название
     weight_kilos: Вес
     workout_id: Тренировка
-    moves: Движения
+    movement: Упражнение
+    full_name: Полное имя
+    nick: Псевдоним

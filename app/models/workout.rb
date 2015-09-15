@@ -1,4 +1,8 @@
 class Workout < ActiveRecord::Base
+  include Authority::UserAbilities
+
+  belongs_to :owner, class_name: 'User'
+
   has_many :moves
   has_many :logs
 

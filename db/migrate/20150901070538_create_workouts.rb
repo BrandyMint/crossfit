@@ -1,6 +1,7 @@
 class CreateWorkouts < ActiveRecord::Migration
   def change
     create_table :workouts do |t|
+      t.integer :owner_id
       t.string :title, null: false
       t.text :description
       t.text :pre_workout
@@ -11,5 +12,7 @@ class CreateWorkouts < ActiveRecord::Migration
 
       t.timestamps
     end
+
+    add_foreign_key :workouts, :users, column: :owner_id
   end
 end

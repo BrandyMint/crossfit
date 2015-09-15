@@ -1,0 +1,19 @@
+ru:
+  activerecord:
+    models:
+      user: Атлеты
+      athlete_wod: Тренировка дня
+      athlete_wod_log: Журнал тренировки
+      athlete_wod_log_movement: Журнал упражнений
+      movement: Типовые упражнения
+      workout_movement: Упражнение конкретной тренировки
+      workout: Типовые тренировки
+      comment: Комментарии
+  errors:
+    models:
+      user:
+        attributes:
+          email:
+            email: 'Неверный формат email'
+          phone:
+            phone: 'Неверный формат телефона. Прим.: +7 913 123 32 10'

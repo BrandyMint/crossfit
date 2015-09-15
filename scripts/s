@@ -1,0 +1,1 @@
+KIOSK_ASSET_HOST=3001.vkontraste.ru KIOSK_HOST=app.3001.vkontraste.ru KIOSK_PORT=80 KIOSK_TLD=2 rails s -p 3001
